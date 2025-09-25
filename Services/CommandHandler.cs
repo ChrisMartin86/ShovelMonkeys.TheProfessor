@@ -31,13 +31,23 @@ namespace ShovelMonkeys.TheProfessor.Services
             _client.InteractionCreated += HandleInteractionAsync;
             await _commands.AddModulesAsync(Assembly.GetEntryAssembly(), _services);
 
-            // Register slash commands to a specific guild
-            await _interactions.AddModulesAsync(Assembly.GetEntryAssembly(), _services);
+            // Register slash commands and component handlers to a specific guild
+            var modules = await _interactions.AddModulesAsync(Assembly.GetEntryAssembly(), _services);
+            Console.WriteLine($"[CommandHandler] Registered interaction modules: {string.Join(", ", modules.Select(m => m.Name))}");
             _client.Ready += RegisterGuildCommandsAsync;
         }
 
         private async Task HandleInteractionAsync(SocketInteraction interaction)
         {
+            // Diagnostic logging for interaction debugging
+            if (interaction is Discord.WebSocket.SocketMessageComponent component)
+            {
+                Console.WriteLine($"[DEBUG] ComponentInteraction received: customId={component.Data.CustomId}");
+            }
+            else
+            {
+                Console.WriteLine($"[DEBUG] Interaction received: type={interaction.Type}");
+            }
             var ctx = new SocketInteractionContext(_client, interaction);
             if (_interactions != null)
                 await _interactions.ExecuteCommandAsync(ctx, _services);

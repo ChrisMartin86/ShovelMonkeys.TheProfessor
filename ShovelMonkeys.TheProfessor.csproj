@@ -1,5 +1,6 @@
 ﻿
 
+
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
@@ -16,6 +17,8 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
     <PackageReference Include="Azure.Data.Tables" Version="12.8.0" />
+
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.19.1" />
   </ItemGroup>
 
 </Project>
