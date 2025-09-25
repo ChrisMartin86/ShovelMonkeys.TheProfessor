@@ -13,6 +13,14 @@ obj/
 # VS Code settings
 .vscode/
 
+# VS settings
+.vs/
+
+# Azurite files
+__azurite*json
+AzuriteConfig
+__blobstorage__*
+
 # Secrets and local config
 appsettings.json
 appsettings.Development.json

@@ -1,6 +1,3 @@
-using System;
-using System.IO;
-using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,6 +21,11 @@ namespace ShovelMonkeys.TheProfessor
                 {
                     services.AddSingleton<BotService>();
                     services.AddSingleton<CommandHandler>(sp => new CommandHandler(sp.GetRequiredService<IConfiguration>()));
+
+                    // Use local Azurite for Azure Table Storage
+                    var tableConn = "UseDevelopmentStorage=true";
+                    services.AddSingleton<Data.CampaignRepository>(_ => new Data.CampaignRepository(tableConn));
+                    services.AddSingleton<Data.QuestRepository>(_ => new Data.QuestRepository(tableConn));
                 })
                 .Build();
 
