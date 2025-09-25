@@ -1,0 +1,46 @@
+# .gitignore for ShovelMonkeys.TheProfessor (.NET Discord Bot)
+
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# VS Code settings
+.vscode/
+
+# Secrets and local config
+appsettings.json
+appsettings.Development.json
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Rider/JetBrains IDEs
+.idea/
+*.sln.iml
+
+# Other
+*.swp
+*.bak
+*.tmp
+
+# Exclude test results
+TestResults/
+
+# Exclude publish output
+publish/
+
+# Exclude coverage reports
+coverage/
+
+# Exclude Copilot instructions (if not for public)
+.github/copilot-instructions.md
